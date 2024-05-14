@@ -1,0 +1,3 @@
+npm install bootstrap
+pip install pymysql 
+my sql worckbench (para visualizar las tablas)
