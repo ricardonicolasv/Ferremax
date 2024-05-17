@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block titulo %}Ferremax - Registro{% endblock %}
+
+{% block contenido %}
+<div class="formulario">
+    <h1> Registrar</h1>
+{{error}}
+<form  method="POST">
+    {% csrf_token %} 
+    {{form.as_p}}
+    <button class="text-white btn bg-custom" type="submit" id="btnsubmit">
+        registrar
+    </button>
+</form>
+</div>
+{% endblock %}

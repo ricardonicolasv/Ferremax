@@ -7,13 +7,6 @@ from .models import TipoPromocion, Especialidad, CategoriaProducto, Usuario, Cli
 class TipoPromocionAdmin(admin.ModelAdmin):
     pass
 
-@admin.register(Especialidad)
-class EspecialidadAdmin(admin.ModelAdmin):
-    pass
-
-@admin.register(CategoriaProducto)
-class CategoriaProductoAdmin(admin.ModelAdmin):
-    pass
 
 @admin.register(Usuario)
 class UsuarioAdmin(admin.ModelAdmin):
@@ -29,10 +22,6 @@ class VendedorAdmin(admin.ModelAdmin):
 
 @admin.register(Sucursal)
 class SucursalAdmin(admin.ModelAdmin):
-    pass
-
-@admin.register(Producto)
-class ProductoAdmin(admin.ModelAdmin):
     pass
 
 @admin.register(Inventario)
@@ -58,3 +47,18 @@ class PromocionAdmin(admin.ModelAdmin):
 @admin.register(Mensaje)
 class MensajeAdmin(admin.ModelAdmin):
     pass
+
+class ProductoAdmin(admin.ModelAdmin):
+    list_display = ('nombre', 'marca', 'get_especialidad', 'get_categoria')
+
+    def get_especialidad(self, obj):
+        return obj.id_especialidad.nombre_especialidad
+    get_especialidad.short_description = 'Especialidad'
+
+    def get_categoria(self, obj):
+        return obj.id_categoria.nombre
+    get_categoria.short_description = 'Categoría'
+
+admin.site.register(Producto, ProductoAdmin)
+admin.site.register(Especialidad)
+admin.site.register(CategoriaProducto)

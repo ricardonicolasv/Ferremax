@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}Ferremax - ingreso{% endblock %}
+{% block contenido %}
+<div class="formulario">
+    <h1>Ingresar</h1>
+    {{error}}
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="text-white btn bg-custom" type="submit" id="btnsubmit">Iniciar sesión</button>
+    </form>
+</div>
+{% endblock %}
